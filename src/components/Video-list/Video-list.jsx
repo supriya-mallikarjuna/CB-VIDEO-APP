@@ -33,8 +33,8 @@ export default class VideoList extends React.Component {
     return (
       <div>
         <div className="video_list">
-          {this.state.videos.map((item, index) => (
-            <VideoItem />
+          {this.state.videos.map((video, index) => (
+            <VideoItem  video={video}/>
           ))}
         </div>
       </div>

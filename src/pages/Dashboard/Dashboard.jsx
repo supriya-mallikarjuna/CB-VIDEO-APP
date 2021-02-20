@@ -17,16 +17,16 @@ export default class Dashboard extends React.Component {
     return (
       <div className="p-4">
         <div className="row">
-          <div className="col-lg-7">
+          <div className="col-lg-7 col-md-6">
             <Searchbar getSearchedItem={this.getSearchedItem} />
           </div>
-          <div className="col-lg-5"></div>
+          <div className="col-lg-5 col-md-6"></div>
         </div>
         <div className="row">
-          <div className="col-lg-7">
+          <div className="col-lg-7 col-md-6">
             <VideoDeatils />
           </div>
-          <div className="col-lg-5">
+          <div className="col-lg-5 col-md-6">
             <VideoList item={this.state.searchedItem} />
           </div>
         </div>
