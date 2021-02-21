@@ -29,12 +29,17 @@ export default class VideoList extends React.Component {
     }
   }
 
+  getSelectedVideo=(video)=>{
+      console.log("??????"+video)
+      this.props.selectedVideo(video)
+  }
+
   render() {
     return (
       <div>
         <div className="video_list">
           {this.state.videos.map((video, index) => (
-            <VideoItem  video={video}/>
+            <VideoItem  video={video}  onSelectedVideo={this.getSelectedVideo}/>
           ))}
         </div>
       </div>
