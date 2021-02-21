@@ -9,7 +9,23 @@ export default class VideoList extends React.Component {
     super(props);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    youtube
+      .get("/search", {
+        params: {
+          q: this.props.item,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        this.setState({ videos: res.data.items });
+        this.props.defalutVideo(res.data.items[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   componentDidUpdate(prevProps) {
     console.log(".... did update" + this.props.item);
     if (this.props.item != prevProps.item) {
@@ -22,6 +38,7 @@ export default class VideoList extends React.Component {
         .then((res) => {
           console.log(res);
           this.setState({ videos: res.data.items });
+         
         })
         .catch((err) => {
           console.log(err);
@@ -29,17 +46,19 @@ export default class VideoList extends React.Component {
     }
   }
 
-  getSelectedVideo=(video)=>{
-      console.log("??????"+video)
-      this.props.selectedVideo(video)
-  }
+  getSelectedVideo = (video) => {
+    console.log("??????" + video);
+    this.props.selectedVideo(video);
+  
+
+  };
 
   render() {
     return (
       <div>
         <div className="video_list">
           {this.state.videos.map((video, index) => (
-            <VideoItem  video={video}  onSelectedVideo={this.getSelectedVideo}/>
+            <VideoItem video={video} onSelectedVideo={this.getSelectedVideo}   />
           ))}
         </div>
       </div>

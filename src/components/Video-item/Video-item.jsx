@@ -10,11 +10,13 @@ export default class VideoItem extends React.Component {
   };
   render() {
     return (
-      <div className="container">
-        <div onClick={() => this.onClickImage(this.props.video)}>
-          <img src={this.props.video.snippet.thumbnails.medium.url} />
+      <div className="">
+        <div className="row">
+          <div className="col-lg-7" onClick={() => this.onClickImage(this.props.video)}>
+            <img src={this.props.video.snippet.thumbnails.medium.url} />
+          </div>
+          <div className="col-lg-5">{this.props.video.snippet.title}</div>
         </div>
-        <div>{this.props.video.snippet.title}</div>
       </div>
     );
   }
